@@ -356,3 +356,67 @@ Reforçar a **identidade da marca**, fornecer **informações legais** e oferece
 
 ## 📱 Responsividade
 - **Desktop**: layout horizontal
+- **Tablet/Mobile**: layout vertical, centralizado
+- **Mobile**: padding horizontal de 16px
+
+## 🎨 Alinhamento com Raleway
+- **Logo**: Bold (700) → identidade
+- **Texto legal**: Light (300) → secundário
+- **Legenda de redes**: Regular (400) → equilíbrio
+
+## 💡 Notas de UX
+- Rodapé **não sticky**, apenas no final do conteúdo
+- Minimalista: sem excesso de links
+- Contraste acessível: texto branco (`#fff`) sobre fundo (`#222`) = **7.2:1**
+
+---
+
+## 🧩 Próximos Passos: Estrutura do Projeto React
+
+Este guia servirá como base para um projeto futuro com:
+
+- **React** (TypeScript)
+- **Vite** (builder rápido)
+- **Tailwind CSS** (utilitários + customização com Raleway)
+- **Lucide React** (ícones consistentes e leves)
+
+### 📁 Estrutura de pastas planejada
+
+src/
+├── components/
+│ ├── layout/ # Header, Footer, Breadcrumb
+│ ├── ui/ # Button, Card, Checkbox, Input, Pagination
+│ ├── members/ # MemberCard, StateFilterSidebar, MembersGrid
+│ └── common/ # PageTitle
+├── pages/
+│ └── MembersListPage.tsx # composição final da página
+└── data/
+└── members.ts # mock de 25 membros
+
+
+### 📏 Fidelidade às medidas
+Todas as proporções definidas neste guia (ex: altura do header = 72px, largura da sidebar = 280px, margens, tamanhos de fonte) serão aplicadas via **classes do Tailwind** (`h-[72px]`, `w-[280px]`, `text-[28px]`, etc.).
+
+### 🎨 Decisões técnicas
+- **Fonte**: `Raleway` carregada via Google Fonts  
+- **Cores**:  
+  - Primária: `#007bff`  
+  - Fundo escuro (footer): `#222`  
+- **Ícones**:  
+  - UI (busca, setas, checkbox): **Lucide React**  
+  - Redes sociais: **SVG inline** (Lucide não cobre redes)  
+- **Responsividade**: mobile-first, com breakpoints para tablet (768px) e desktop (1024px+)
+
+### 🧱 Componentização
+Nenhum componente será monolítico. Exemplo:
+- `Conteúdo Principal` → `StateFilterSidebar` + `MembersGrid` + `MemberCard`
+- `Paginação` → componente reutilizável com estado e acessibilidade
+
+> ✅ Este repositório permanecerá como **única fonte de verdade visual e funcional** antes e durante a implementação.
+
+---
+
+✅ **Documento finalizado em 3 de novembro de 2025**  
+🧑‍💻 **Autor**: Marcos Lima  
+🔗 **Repositório**: https://github.com/marcos-lima-dev/guia-essencial-01
+EOF
