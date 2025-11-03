@@ -23,7 +23,7 @@
 | Nº | Componente               | Status     |
 |----|--------------------------|------------|
 | 1  | Cabeçalho (Header)       | ✅ Concluído |
-| 2  | Breadcrumb               | ⏳ Pendente |
+| 2  | Breadcrumb               | ✅ Concluído |
 | 3  | Título Principal         | ⏳ Pendente |
 | 4  | Conteúdo Principal       | ⏳ Pendente |
 | 5  | Paginação                | ⏳ Pendente |
@@ -68,4 +68,18 @@ Permitir identificação da marca, busca rápida e acesso a ações do usuário 
 
 ---
 
-<!-- Próximos componentes serão adicionados aqui -->
+# 🧭 Componente 2: Breadcrumb (Caminho de Navegação)
+
+## 🎯 Objetivo principal
+Mostrar ao usuário a **localização atual dentro da hierarquia do site**, permitindo navegação contextual e retorno fácil a páginas anteriores.
+
+## 📐 Estrutura e Proporções (desktop, ~1440px)
+
+- **Posicionamento**: logo abaixo do cabeçalho, alinhado à esquerda com o conteúdo principal.
+- **Altura da linha**: ~24px
+- **Fonte**: Raleway, **300 (Light)**, tamanho **14px**
+- **Cor do texto**:
+  - Páginas anteriores: `#666` (cinza médio)
+  - Página atual: `#333` (cinza escuro) + **sem link**
+- **Separadores**: símbolo `>` (ou `/`) em `#999`, com espaçamento de **8px** antes e depois
+- **Exemplo visual**:
