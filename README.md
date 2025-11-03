@@ -1,3 +1,4 @@
+cat > README.md << 'EOF'
 # 🧭 Guia Essencial #01: Visão de Design da Página “Lista de Membros”
 
 > **Este repositório NÃO contém código.**  
@@ -26,7 +27,7 @@
 | 2  | Breadcrumb               | ✅ Concluído |
 | 3  | Título Principal         | ✅ Concluído |
 | 4  | Conteúdo Principal       | ✅ Concluído |
-| 5  | Paginação                | ⏳ Pendente |
+| 5  | Paginação                | ✅ Concluído |
 | 6  | Rodapé (Footer)          | ⏳ Pendente |
 
 > 🔁 Este documento será atualizado conforme avançamos.
@@ -151,7 +152,7 @@ Permitir que o usuário **filtre membros por estado** e **navegue visualmente pe
 
 - **Layout em duas colunas**:
   - **Sidebar (esquerda)**: largura fixa de **280px**
-  - **Grade de membros (direita)**: ocupa o restante (`calc(100% - 300px)`, com 20px de gap)
+  - **Grade de membros (direita)**: ocupa o restante (\`calc(100% - 300px)\`, com 20px de gap)
 - **Margem superior**: 0 (conecta-se diretamente ao título)
 - **Espaçamento interno (padding)**: 24px à esquerda e direita no container (opcional, depende do alinhamento global)
 
@@ -247,4 +248,69 @@ Exibir perfis de forma **legível, escaneável e consistente**.
 
 ---
 
+# 🧭 Componente 5: Paginação
+
+## 🎯 Objetivo principal
+Permitir que o usuário **navegue entre páginas de membros** de forma intuitiva, mantendo contexto visual (página atual destacada) e oferecendo controles claros de navegação.
+
+## 📐 Estrutura e Proporções (desktop, ~1440px)
+
+- **Posicionamento**: centralizado abaixo da grade de membros, com margem superior de **32px**
+- **Altura total**: ~40px
+- **Elementos**:
+  - Botão “Anterior” (\`<<\`):  
+    - Largura: 40px, altura: 40px  
+    - Borda arredondada: 50% (círculo) ou 8px (botão arredondado)  
+    - Cor de fundo: \`#f8f9fa\` (cinza claro)  
+    - Ícone ou texto: \`<<\` ou ícone de seta esquerda
+  - **Números de página**:  
+    - Cada número: 40x40px, alinhado ao centro  
+    - Fonte: Raleway **500**, 15px, cor:  
+      - Página atual: \`#007bff\` (azul de acento) + **Bold**  
+      - Outras páginas: \`#555\`  
+    - Hover: fundo \`#f8f9fa\`, transição suave
+  - Botão “Próxima” (\`>>\`): mesmo estilo do “Anterior”
+- **Exemplo visual** (desktop):
+  \`\`\`
+  [ << ]  [ 1 ]  [ 2 ]  [ 3 ]  [ >> ]
+  \`\`\`
+- **Espaçamento entre itens**: 8px
+
+## 📊 Quantidade de páginas exibidas
+- Mostrar **até 3 páginas visíveis** por padrão (ex: 1, 2, 3)
+- Se houver mais de 3 páginas, usar **“…” (elipse)** para indicar truncamento:
+  \`\`\`
+  [ << ]  [ 1 ]  [ 2 ]  [ ... ]  [ 12 ]  [ >> ]
+  \`\`\`
+- A página atual **sempre deve estar visível**
+
+## 🔄 Comportamento esperado
+- Ao clicar em um número: carrega os membros daquela página (com spinner ou transição suave)
+- Botões “Anterior”/“Próxima” desabilitados nas extremidades:
+  - “Anterior” desabilitado na **página 1**
+  - “Próxima” desabilitada na **última página**
+- Estado desabilitado: cor de texto \`#ccc\`, cursor \`not-allowed\`
+
+## 📱 Responsividade
+- **Tablet**: mantém o mesmo layout, mas pode reduzir padding interno
+- **Mobile**:
+  - Mostrar apenas: **[ << ] [ página atual ] [ >> ]**
+  - Exemplo: \`[ << ] [ 2 ] [ >> ]\`
+  - Ou usar botões de seta com texto “Anterior” / “Próxima” (opcional, se houver espaço)
+- Garantir toque fácil: área mínima de toque de **48x48px** por botão
+
+## 🎨 Alinhamento com Raleway
+- Fonte **500 (Medium)** oferece peso ideal: visível, mas não dominante
+- Números legíveis mesmo em tamanhos pequenos graças à altura-x generosa da Raleway
+
+## 💡 Notas de UX
+- **Não usar paginação infinita (infinite scroll)**: o layout original prevê paginação explícita
+- Manter **consistência visual** com outros botões do sistema (se houver)
+- Considerar **acessibilidade**:  
+  - Atributos ARIA (\`aria-current="page"\`)  
+  - Navegação por teclado funcional
+
+---
+
 <!-- Próximos componentes serão adicionados aqui -->
+EOF
