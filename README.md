@@ -1,4 +1,3 @@
-cat > README.md << 'EOF'
 # 🧭 Guia Essencial #01: Visão de Design da Página “Lista de Membros”
 
 > **Este repositório NÃO contém código.**  
@@ -26,7 +25,7 @@ cat > README.md << 'EOF'
 | 1  | Cabeçalho (Header)       | ✅ Concluído |
 | 2  | Breadcrumb               | ✅ Concluído |
 | 3  | Título Principal         | ✅ Concluído |
-| 4  | Conteúdo Principal       | ⏳ Pendente |
+| 4  | Conteúdo Principal       | ✅ Concluído |
 | 5  | Paginação                | ⏳ Pendente |
 | 6  | Rodapé (Footer)          | ⏳ Pendente |
 
@@ -143,5 +142,109 @@ Comunicar de forma **imediata e inequívoca** o propósito da página. Deve ser 
 
 ---
 
+# 🧭 Componente 4: Conteúdo Principal
+
+## 🎯 Objetivo principal
+Permitir que o usuário **filtre membros por estado** e **navegue visualmente pelos perfis**, com clareza, eficiência e espaço adequado para expansão futura (ex: mais campos, ações por membro).
+
+## 📐 Estrutura Geral (desktop, ~1440px)
+
+- **Layout em duas colunas**:
+  - **Sidebar (esquerda)**: largura fixa de **280px**
+  - **Grade de membros (direita)**: ocupa o restante (`calc(100% - 300px)`, com 20px de gap)
+- **Margem superior**: 0 (conecta-se diretamente ao título)
+- **Espaçamento interno (padding)**: 24px à esquerda e direita no container (opcional, depende do alinhamento global)
+
+## 🧩 Parte 4.1: Sidebar — Filtros por Estado
+
+### Objetivo
+Oferecer **filtragem por estado** de forma simples e escalável.
+
+### Estrutura
+- **Título**: “Por Estado”  
+  - Raleway **600**, 18px, cor \`#444\`, margin-bottom: 16px
+- **Checkboxes**:
+  - Estilo personalizado (não nativo do browser)
+  - Caixa do checkbox: 16x16px, borda \`1px solid #ccc\`, arredondamento 4px
+  - Ao marcar: fundo \`#007bff\`, ícone de ✅ branco centralizado
+  - Texto ao lado: Raleway **400**, 16px, cor \`#555\`, margin-left: 8px
+  - Itens com padding vertical de 8px
+- **Estados listados**:
+  - São Paulo
+  - Rio de Janeiro
+  - Minas Gerais
+  - Espírito Santo
+  - Bahia
+- **Link “Ver todos”**:
+  - Raleway **500**, 15px, cor \`#007bff\`
+  - Ao clicar: expande a lista completa de estados (funcionalidade futura)
+  - Margin-top: 12px
+
+### Comportamento
+- Seleção múltipla permitida
+- Ao marcar/desmarcar, a grade de membros **atualiza em tempo real**
+- “Ver todos” pode abrir modal ou expandir inline (a definir)
+
+### Responsividade
+- **Tablet (até 1024px)**: sidebar vira **acordeão** (colapsável) ou se move para **filtro superior** (botão “Filtrar” que abre drawer)
+- **Mobile**: filtros entram em **modal ou drawer lateral**, liberando 100% da tela para a grade
+
+## 🧩 Parte 4.2: Grade de Membros
+
+### Objetivo
+Exibir perfis de forma **legível, escaneável e consistente**.
+
+### Estrutura da Grade
+- **Layout**: CSS Grid (3 colunas em desktop)
+- **Gap**: 24px entre cards
+- **Cards por linha**: 3 (desktop), 2 (tablet), 1 (mobile)
+- **Largura do card**: \`100%\` (dentro da coluna do grid)
+
+### Estrutura do Card
+- **Altura**: ~160px (ajustável conforme conteúdo)
+- **Borda**: \`1px solid #eee\`, bordas arredondadas 8px
+- **Sombra sutil**: \`box-shadow: 0 2px 6px rgba(0,0,0,0.05)\` (opcional)
+- **Padding interno**: 16px
+
+### Conteúdo do Card
+1. **Avatar**:
+   - Tamanho: 40x40px
+   - Formato: círculo (\`border-radius: 50%\`)
+   - Cor de fundo: \`#e0e0e0\`
+   - Ícone genérico de pessoa (SVG ou emoji 👤)
+2. **Nome**:
+   - Raleway **600**, 18px, cor \`#333\`, margin-top: 8px
+3. **Endereço**:
+   - Raleway **400**, 15px, cor \`#555\`, margin-top: 4px
+   - Formato:  
+     \`Rua Exemplo, 123\`  
+     \`Cidade - SP, 12345-678\`
+4. **Placeholders (linhas cinzas)**:
+   - Representam campos futuros (ex: “Representante”, “(11) 99999-9999”)
+   - Altura: 12px, largura variável, fundo \`#f0f0f0\`, borda arredondada 4px
+   - Margin-top: 8px
+
+### Comportamento
+- Cada card **não é clicável por padrão**, mas pode ter um botão “Ver detalhes” no futuro
+- Ao aplicar filtros, **os cards não correspondentes desaparecem com animação suave**
+
+### Responsividade
+- **Desktop**: 3 colunas
+- **Tablet (768px–1023px)**: 2 colunas
+- **Mobile (<768px)**: 1 coluna, cards com padding horizontal ajustado
+
+## 🎨 Alinhamento com Raleway
+- Hierarquia clara:
+  - Nome: **600** → destaque
+  - Endereço: **400** → informação secundária
+  - Placeholders: não usam texto, mas se tiverem, seriam **300**
+- A Raleway permite **alta densidade de informação sem poluição visual**
+
+## 💡 Notas de UX
+- Evitar sobrecarregar o card — o foco é **nome + localização**
+- Filtros devem ser **persistentes** (se o usuário atualizar, os estados selecionados permanecem)
+- Número de itens exibidos: **9 por página** (3×3), conforme layout original
+
+---
+
 <!-- Próximos componentes serão adicionados aqui -->
-EOF
