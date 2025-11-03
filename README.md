@@ -1,4 +1,3 @@
-cat > README.md << 'EOF'
 # 🧭 Guia Essencial #01: Visão de Design da Página “Lista de Membros”
 
 > **Este repositório NÃO contém código.**  
@@ -28,9 +27,10 @@ cat > README.md << 'EOF'
 | 3  | Título Principal         | ✅ Concluído |
 | 4  | Conteúdo Principal       | ✅ Concluído |
 | 5  | Paginação                | ✅ Concluído |
-| 6  | Rodapé (Footer)          | ⏳ Pendente |
+| 6  | Rodapé (Footer)          | ✅ Concluído |
 
-> 🔁 Este documento será atualizado conforme avançamos.
+> 🎉 **Análise de visão de design concluída!**  
+> Pronto para avançar à fase de prototipagem ou implementação.
 
 ---
 
@@ -312,5 +312,47 @@ Permitir que o usuário **navegue entre páginas de membros** de forma intuitiva
 
 ---
 
-<!-- Próximos componentes serão adicionados aqui -->
-EOF
+# 🧭 Componente 6: Rodapé (Footer)
+
+## 🎯 Objetivo principal
+Reforçar a **identidade da marca**, fornecer **informações legais** e oferecer **acesso rápido às redes sociais**, garantindo fechamento visual consistente da página.
+
+## 📐 Estrutura e Proporções (desktop, ~1440px)
+
+- **Altura total**: ~120px
+- **Fundo**: \`#222\` (cinza escuro quase preto)
+- **Conteúdo centralizado horizontalmente**, com largura máxima de **1200px**
+- **Padding vertical**: 24px
+
+### Elementos
+
+1. **Logo da marca**:
+   - Texto: “JUNTOS SOMOS+”
+   - Fonte: Raleway **700 (Bold)**, 20px
+   - Cor: \`#fff\`
+   - Margin-bottom (mobile): 12px
+
+2. **Texto legal**:
+   - Texto: “Juntos Somos Mais Fidelização S.A.”
+   - Fonte: Raleway **300 (Light)**, 14px
+   - Cor: \`#ccc\`
+   - Margin-bottom: 16px (em mobile); em desktop, alinhado à esquerda
+
+3. **Seção de redes sociais**:
+   - Título: “Siga-nos nas redes sociais:”
+     - Fonte: Raleway **400**, 14px, cor \`#ddd\`
+     - Margin-bottom: 8px (apenas em mobile)
+   - **Ícones** (Facebook, LinkedIn, Instagram):
+     - Tamanho: 32x32px
+     - Formato: círculos com fundo \`#007bff\` (azul de marca)
+     - Ícone branco centralizado (SVG ou emoji)
+     - Hover: leve escurecimento (\`#0069d9\`) ou sombra sutil
+     - Espaçamento horizontal: 12px entre ícones
+
+## 🔄 Comportamento esperado
+- **Logo**: clicável → leva à página inicial
+- **Ícones de redes sociais**: links externos abrem em nova aba (\`target="_blank"\`)
+- Todos os elementos devem ter foco acessível (borda ao navegar com teclado)
+
+## 📱 Responsividade
+- **Desktop**: layout horizontal
